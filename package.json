@@ -1,0 +1,25 @@
+{
+  "name": "suf-regex",
+  "version": "0.0.1",
+  "description": "regex utility functions.",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "directories": {
+    "lib": "lib"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "prepack": "tsc -b"
+  },
+  "author": "Syler",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheRealSyler/suf"
+  }
+}
