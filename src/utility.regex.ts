@@ -1,7 +1,6 @@
-export function escapeRegExp(text) {
+export function escapeRegExp(text: string) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 }
-
 /**
  * Check whether text is a variable.
  */
@@ -19,6 +18,12 @@ export function isStar(text: string): boolean {
  */
 export function isClassOrId(text: string): boolean {
   return /^[\t ]*[#\.%]/.test(text);
+}
+/**
+ * Check whether text is class, id or placeholder
+ */
+export function isEmptyOrWhitespace(text: string): boolean {
+  return /^[\t ]*$/.test(text);
 }
 /**
  * Check whether text is a property
@@ -146,15 +151,15 @@ export function isSassSpace(text: string) {
   return /^[\t ]*\/?\/\/ *S *$/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isPath(text: string) {
   return /^.*['"]\.?[\.\/]$/.test(text);
 }
 /**
- *
+ * TODO
  */
-export function isScssOrCss(text: string, wasLastLineCss: boolean = false) {
+export function isScssOrCss(text: string, wasLastLineCss = false) {
   if (wasLastLineCss && text.endsWith(',') && isClassOrId(text)) {
     return true;
   }
@@ -163,53 +168,60 @@ export function isScssOrCss(text: string, wasLastLineCss: boolean = false) {
   return /[;\{\}][\t ]*(\/\/.*)?$/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isCssPseudo(text: string) {
   return /^[\t ]*[&.#%].*:/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isCssOneLiner(text: string) {
   return /^[\t ]*[&.#%][\w-]*(?!#)\{.*[;\}]$/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isPseudoWithParenthesis(text: string) {
   return /^[\t ]*::?[\w\-]+\(.*\)/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isComment(text: string) {
   return /^[\t ]*\/\/|^ *\/\*/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isBlockCommentStart(text: string) {
   return /^[\t ]*(\/\*)/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isBlockCommentEnd(text: string) {
   return /[\t ]*\*\/|(?=^[a-zA-Z0-9#.%$@\\[=*+])/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function isMoreThanOneClassOrId(text: string) {
   return /^[\t ]*[\.#%].* ?, *[\.#%].*/.test(text);
 }
 /**
- *
+ * TODO
  */
 export function hasColor(text: string) {
   return /^.*#[a-fA-F\d]{3,4}\b|^.*#[a-fA-F\d]{6}\b|^.*#[a-fA-F\d]{8}\b|rgba?\([\d. ]+,[\d. ]+,[\d. ]+(,[\d. ]+)?\)/.test(text);
 }
+/**
+ * TODO
+ */
+export function isBracketOrWhitespace(text: string) {
+  return /^[\t ]*[}{]+[\t }{]*/.test(text);
+}
+
 /**
  * if the Property Value Space is none or more that one, this function returns false, else true;
  */
@@ -264,7 +276,7 @@ export function getDistanceReversed(text: string, tabSize: number): number {
   return count;
 }
 /**
- *
+ * TODO
  */
 export function splitOnce(text: string, splitter: string) {
   const split = text.split(splitter);
