@@ -17,7 +17,7 @@ export function isStar(text: string): boolean {
  * Check whether text is class, id or placeholder
  */
 export function isClassOrId(text: string): boolean {
-  return /^[\t ]*[#\.%]/.test(text);
+  return /^[\t ]*[#\.%+]/.test(text);
 }
 /**
  * Check whether text is class, id or placeholder
@@ -50,7 +50,7 @@ export function isKeyframes(text: string): boolean {
  * Check whether text is a mixin
  */
 export function isMixin(text: string): boolean {
-  return /^[\t ]*@mixin/.test(text);
+  return /^[\t ]*[(@mixin)=]/.test(text);
 }
 /**
  * Check whether text is a each

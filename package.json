@@ -11,15 +11,38 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "prepack": "tsc -b"
+    "prepack": "npm run test && npm run build",
+    "build": "tsc -b",
+    "watch": "tsc -w",
+    "test": "jest"
   },
   "author": "Syler",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "tslib": "^1.10.0",
     "typescript": "^3.5.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TheRealSyler/suf"
+    "url": "https://github.com/TheRealSyler/suf-regex"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx",
+      "node"
+    ],
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
   }
 }

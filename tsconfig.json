@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules", "lib"],
+  "exclude": ["node_modules", "**/*.spec.ts", "lib"],
   "compilerOptions": {
     "outDir": "./lib",
     "strict": false,
