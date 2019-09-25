@@ -1,4 +1,4 @@
-import { isClassOrId, isProperty, hasPropertyValueSpace } from './utility.regex';
+import { isClassOrId, isProperty, hasPropertyValueSpace, isMixin } from './utility.regex';
 
 test('Is Class OR Id', () => {
   expect(isClassOrId('	  +desktop')).toEqual(true);
@@ -18,6 +18,15 @@ test('Is Property', () => {
   expect(isProperty('  	margin: 213px')).toEqual(true);
   expect(isProperty('	  +desktop')).toEqual(false);
   expect(isProperty('=function')).toEqual(false);
+});
+test('Is Mixin', () => {
+  expect(isMixin('	-any-prop: 213px')).toEqual(false);
+  expect(isMixin('any-prop: 213px')).toEqual(false);
+  expect(isMixin('  margin: 213px')).toEqual(false);
+  expect(isMixin('  	margin: 213px')).toEqual(false);
+  expect(isMixin('	  +desktop')).toEqual(false);
+  expect(isMixin('=function')).toEqual(true);
+  expect(isMixin('@mixin function')).toEqual(true);
 });
 test('has Property Value Space', () => {
   expect(hasPropertyValueSpace('prop: 12px')).toEqual(true);

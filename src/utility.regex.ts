@@ -50,7 +50,7 @@ export function isKeyframes(text: string): boolean {
  * Check whether text is a mixin
  */
 export function isMixin(text: string): boolean {
-  return /^[\t ]*[(@mixin)=]/.test(text);
+  return /^[\t ]*=|^[\t ]*@mixin/.test(text);
 }
 /**
  * Check whether text is a each
