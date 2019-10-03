@@ -113,7 +113,12 @@ export function isVoidHtmlTag(text: string) {
   }
   return isTag;
 }
-
+/**
+ * Check whether text starts with @media.
+ */
+export function isMedia(text: string) {
+  return /^[\t ]*@media/.test(text);
+}
 /**
  * Check whether text starts with ::.
  */
@@ -238,8 +243,7 @@ export function hasPropertyValueSpace(text: string) {
     : false;
 }
 /**
- * returns the distance between the beginning and the first char that is not the checkAgainstChar in form of a number.
- * @param checkAgainstChar defaults to `' '` should always be only one char.
+ * returns the distance between the beginning and the first char.
  */
 export function getDistance(text: string, tabSize: number): number {
   let count = 0;
@@ -257,8 +261,7 @@ export function getDistance(text: string, tabSize: number): number {
   return count;
 }
 /**
- * returns the distance between the end and the first char that is not the checkAgainstChar in form of a number.
- * @param checkAgainstChar defaults to `' '` should always be only one char.
+ * returns the distance between the end and the first char.
  */
 export function getDistanceReversed(text: string, tabSize: number): number {
   let count = 0;
