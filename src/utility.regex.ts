@@ -53,10 +53,16 @@ export function isMixin(text: string): boolean {
   return /^[\t ]*=|^[\t ]*@mixin/.test(text);
 }
 /**
- * Check whether text is a @each or @for
+ * Check whether text is a loop
  */
-export function isEachOrFor(text: string): boolean {
-  return /^[\t ]*(@each|@for)/.test(text);
+export function isLoop(text: string): boolean {
+  return /^[\t ]*(@each|@for|@while)/.test(text);
+}
+/**
+ * Check whether text is a AtRoot
+ */
+export function isAtRoot(text: string): boolean {
+  return /^[\t ]*(@at-root)/.test(text);
 }
 /**
  * Check whether text starts with one of [+>~]
