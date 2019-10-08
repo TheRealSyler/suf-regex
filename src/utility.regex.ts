@@ -53,10 +53,16 @@ export function isMixin(text: string): boolean {
   return /^[\t ]*=|^[\t ]*@mixin/.test(text);
 }
 /**
- * Check whether text is a each
+ * Check whether text is a @each or @for
  */
-export function isEach(text: string): boolean {
-  return /^[\t ]*@each/.test(text);
+export function isEachOrFor(text: string): boolean {
+  return /^[\t ]*(@each|@for)/.test(text);
+}
+/**
+ * Check whether text starts with one of [+>~]
+ */
+export function isPreSelector(text: string): boolean {
+  return /^[\t ]*[+>~]/.test(text);
 }
 /**
  * Check whether text starts with &
