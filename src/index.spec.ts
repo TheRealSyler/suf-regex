@@ -1,4 +1,4 @@
-import { isClassOrId, isProperty, hasPropertyValueSpace, isMixin } from './utility.regex';
+import { isClassOrId, isProperty, hasPropertyValueSpace, isMixin, isPseudo } from './utility.regex';
 
 test('Is Class OR Id', () => {
   expect(isClassOrId('	  +desktop')).toEqual(true);
@@ -32,4 +32,9 @@ test('has Property Value Space', () => {
   expect(hasPropertyValueSpace('prop: 12px')).toEqual(true);
   expect(hasPropertyValueSpace('prop:  12px')).toEqual(false);
   expect(hasPropertyValueSpace('prop:12px')).toEqual(false);
+});
+test('Is Pseudo', () => {
+  expect(isPseudo(':root')).toEqual(true);
+  expect(isPseudo('\\:root', true)).toEqual(true);
+  expect(isPseudo('\\:root')).toEqual(false);
 });

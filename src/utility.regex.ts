@@ -134,7 +134,10 @@ export function isMedia(text: string) {
 /**
  * Check whether text starts with ::.
  */
-export function isPseudo(text: string) {
+export function isPseudo(text: string, ignoreBackslash?: boolean) {
+  if (ignoreBackslash) {
+    return /^[\t ]*\\::?/.test(text);
+  }
   return /^[\t ]*::?/.test(text);
 }
 /**
@@ -230,7 +233,9 @@ export function isMoreThanOneClassOrId(text: string) {
  * TODO
  */
 export function hasColor(text: string) {
-  return /^.*#[a-fA-F\d]{3,4}\b|^.*#[a-fA-F\d]{6}\b|^.*#[a-fA-F\d]{8}\b|rgba?\([\d. ]+,[\d. ]+,[\d. ]+(,[\d. ]+)?\)/.test(text);
+  return /^.*#[a-fA-F\d]{3,4}\b|^.*#[a-fA-F\d]{6}\b|^.*#[a-fA-F\d]{8}\b|rgba?\([\d. ]+,[\d. ]+,[\d. ]+(,[\d. ]+)?\)/.test(
+    text
+  );
 }
 /**
  * TODO
