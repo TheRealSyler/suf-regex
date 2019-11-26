@@ -35,6 +35,5 @@ test('has Property Value Space', () => {
 });
 test('Is Pseudo', () => {
   expect(isPseudo(':root')).toEqual(true);
-  expect(isPseudo('\\:root', true)).toEqual(true);
-  expect(isPseudo('\\:root')).toEqual(false);
+  expect(isPseudo('\\:root')).toEqual(true);
 });

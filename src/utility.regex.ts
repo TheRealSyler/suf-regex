@@ -134,11 +134,8 @@ export function isMedia(text: string) {
 /**
  * Check whether text starts with ::.
  */
-export function isPseudo(text: string, ignoreBackslash?: boolean) {
-  if (ignoreBackslash) {
-    return /^[\t ]*\\::?/.test(text);
-  }
-  return /^[\t ]*::?/.test(text);
+export function isPseudo(text: string) {
+  return /^[\t ]*\\?::?/.test(text);
 }
 /**
  * Check whether text starts with @if.
