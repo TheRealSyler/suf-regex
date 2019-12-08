@@ -174,14 +174,13 @@ export function isPath(text: string) {
   return /^.*['"]\.?[\.\/]$/.test(text);
 }
 /**
- * TODO
+ * Returns true if the string has brackets or semicolons at the end, comments get ignored.
  */
 export function isScssOrCss(text: string, wasLastLineCss = false) {
   if (wasLastLineCss && text.endsWith(',') && isClassOrId(text)) {
     return true;
   }
-
-  // comments get handled somewhere else.
+  // Check if has brackets at the end and ignore comments.
   return /[;\{\}][\t ]*(\/\/.*)?$/.test(text);
 }
 /**
