@@ -35,6 +35,30 @@ export function isProperty(text: string, empty?: boolean): boolean {
   return /^[\t ]*[\w\-]+:/.test(text);
 }
 /**
+ * Check whether text starts with one of [+>~]
+ */
+export function isPreSelector(text: string): boolean {
+  return /^[\t ]*[+>~]/.test(text);
+}
+/**
+ * Check whether text starts with &
+ */
+export function isAnd(text: string): boolean {
+  return /^[\t ]*&/.test(text);
+}
+/**
+ * Check whether text is a AtRoot
+ */
+export function isAtRoot(text: string): boolean {
+  return /^[\t ]*(@at-root)/.test(text);
+}
+/**
+ * Check whether text is at rule
+ */
+export function isAtRule(text: string): boolean {
+  return /^[\t ]*@/.test(text);
+}
+/**
  * Check whether text is a include
  */
 export function isInclude(text: string): boolean {
@@ -59,28 +83,34 @@ export function isLoop(text: string): boolean {
   return /^[\t ]*(@each|@for|@while)/.test(text);
 }
 /**
- * Check whether text is a AtRoot
+ * Check whether text starts with @media.
  */
-export function isAtRoot(text: string): boolean {
-  return /^[\t ]*(@at-root)/.test(text);
+export function isMedia(text: string) {
+  return /^[\t ]*@media/.test(text);
 }
 /**
- * Check whether text starts with one of [+>~]
+ * TODO
  */
-export function isPreSelector(text: string): boolean {
-  return /^[\t ]*[+>~]/.test(text);
+export function isFontFace(text: string) {
+  return /^[\t ]*@font-face/.test(text);
 }
 /**
- * Check whether text starts with &
+ * Check whether text starts with ::.
  */
-export function isAnd(text: string): boolean {
-  return /^[\t ]*&/.test(text);
+export function isPseudo(text: string) {
+  return /^[\t ]*\\?::?/.test(text);
 }
 /**
- * Check whether text is at rule
+ * Check whether text starts with @if.
  */
-export function isAtRule(text: string): boolean {
-  return /^[\t ]*@/.test(text);
+export function isIfOrElse(text: string) {
+  return /^[\t ]*@if|^ *@else/.test(text);
+}
+/**
+ * Check whether text starts with @else.
+ */
+export function isElse(text: string) {
+  return /^[\t ]*@else/.test(text);
 }
 /**
  * Check whether text is bracket selector
@@ -125,30 +155,7 @@ export function isVoidHtmlTag(text: string) {
   }
   return isTag;
 }
-/**
- * Check whether text starts with @media.
- */
-export function isMedia(text: string) {
-  return /^[\t ]*@media/.test(text);
-}
-/**
- * Check whether text starts with ::.
- */
-export function isPseudo(text: string) {
-  return /^[\t ]*\\?::?/.test(text);
-}
-/**
- * Check whether text starts with @if.
- */
-export function isIfOrElse(text: string) {
-  return /^[\t ]*@if|^ *@else/.test(text);
-}
-/**
- * Check whether text starts with @else.
- */
-export function isElse(text: string) {
-  return /^[\t ]*@else/.test(text);
-}
+
 /**
  * Check whether text starts with //R.
  */
@@ -173,6 +180,7 @@ export function isSassSpace(text: string) {
 export function isPath(text: string) {
   return /^.*['"]\.?[\.\/]$/.test(text);
 }
+
 /**
  * Returns true if the string has brackets or semicolons at the end, comments get ignored.
  */
