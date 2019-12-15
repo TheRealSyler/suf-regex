@@ -17,13 +17,16 @@ export function isStar(text: string): boolean {
  * Check whether text is class, id or placeholder
  */
 export function isClassOrId(text: string): boolean {
-  return /^[\t ]*[#\.%+]/.test(text);
+  return /^[\t ]*[#\.%]/.test(text);
+}
+export function isAdjacentSelector(text: string): boolean {
+  return /^[\t ]*\+[\t ]+/.test(text);
 }
 /**
  * Check whether text is class, id or placeholder
  */
 export function isEmptyOrWhitespace(text: string): boolean {
-  return /^[\t ]*$/.test(text);
+  return /^[\t ]*\n?$/.test(text);
 }
 /**
  * Check whether text is a property
@@ -35,10 +38,10 @@ export function isProperty(text: string, empty?: boolean): boolean {
   return /^[\t ]*[\w\-]+:/.test(text);
 }
 /**
- * Check whether text starts with one of [+>~]
+ * Check whether text starts with one of [>~]
  */
-export function isPreSelector(text: string): boolean {
-  return /^[\t ]*[+>~]/.test(text);
+export function isSelectorOperator(text: string): boolean {
+  return /^[\t ]*[>~]/.test(text);
 }
 /**
  * Check whether text starts with &
@@ -95,7 +98,7 @@ export function isFontFace(text: string) {
   return /^[\t ]*@font-face/.test(text);
 }
 /**
- * Check whether text starts with ::.
+ * Check whether text starts with `::`.
  */
 export function isPseudo(text: string) {
   return /^[\t ]*\\?::?/.test(text);
@@ -191,59 +194,41 @@ export function isScssOrCss(text: string, wasLastLineCss = false) {
   // Check if has brackets at the end and ignore comments.
   return /[;\{\}][\t ]*(\/\/.*)?$/.test(text);
 }
-/**
- * TODO
- */
+
 export function isCssPseudo(text: string) {
   return /^[\t ]*[&.#%].*:/.test(text);
 }
-/**
- * TODO
- */
+
 export function isCssOneLiner(text: string) {
   return /^[\t ]*[&.#%][\w-]*(?!#)\{.*[;\}]$/.test(text);
 }
-/**
- * TODO
- */
+
 export function isPseudoWithParenthesis(text: string) {
   return /^[\t ]*::?[\w\-]+\(.*\)/.test(text);
 }
-/**
- * TODO
- */
+
 export function isComment(text: string) {
   return /^[\t ]*\/\/|^ *\/\*/.test(text);
 }
-/**
- * TODO
- */
+
 export function isBlockCommentStart(text: string) {
   return /^[\t ]*(\/\*)/.test(text);
 }
-/**
- * TODO
- */
+
 export function isBlockCommentEnd(text: string) {
-  return /[\t ]*\*\/|(?=^[a-zA-Z0-9#.%$@\\[=*+])/.test(text);
+  return /[\t ]*(\*\/|^[^*])/.test(text);
 }
-/**
- * TODO
- */
+
 export function isMoreThanOneClassOrId(text: string) {
   return /^[\t ]*[\.#%].* ?, *[\.#%].*/.test(text);
 }
-/**
- * TODO
- */
+
 export function hasColor(text: string) {
   return /^.*#[a-fA-F\d]{3,4}\b|^.*#[a-fA-F\d]{6}\b|^.*#[a-fA-F\d]{8}\b|rgba?\([\d. ]+,[\d. ]+,[\d. ]+(,[\d. ]+)?\)/.test(
     text
   );
 }
-/**
- * TODO
- */
+
 export function isBracketOrWhitespace(text: string) {
   return /^[\t ]*[}{]+[\t }{]*/.test(text);
 }

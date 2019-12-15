@@ -1,7 +1,6 @@
-import { isClassOrId, isProperty, hasPropertyValueSpace, isMixin, isPseudo } from './utility.regex';
+import { isClassOrId, isProperty, hasPropertyValueSpace, isMixin, isPseudo, isBlockCommentEnd } from './utility.regex';
 
 test('Is Class OR Id', () => {
-  expect(isClassOrId('	  +desktop')).toEqual(true);
   expect(isClassOrId('  	.desktop')).toEqual(true);
   expect(isClassOrId('.desktop')).toEqual(true);
   expect(isClassOrId('		#desktop')).toEqual(true);
@@ -36,4 +35,7 @@ test('has Property Value Space', () => {
 test('Is Pseudo', () => {
   expect(isPseudo(':root')).toEqual(true);
   expect(isPseudo('\\:root')).toEqual(true);
+});
+test('Is Pseudo', () => {
+  expect(isBlockCommentEnd('*')).toEqual(false);
 });
