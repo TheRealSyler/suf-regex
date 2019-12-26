@@ -1,6 +1,6 @@
 {
   "name": "suf-regex",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "regex utility functions.",
   "files": [
     "lib",
