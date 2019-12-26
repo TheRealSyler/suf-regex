@@ -9,9 +9,7 @@ export function isVar(text: string): boolean {
 export function isStar(text: string): boolean {
   return /^[\t ]*?\*/.test(text);
 }
-/**
- * Check whether text is class, id or placeholder
- */
+/**Check whether text is class, id or placeholder: `/^[\t ]*[#\.%]/` */
 export function isClassOrId(text: string): boolean {
   return /^[\t ]*[#\.%]/.test(text);
 }
@@ -50,78 +48,51 @@ export function isAtRoot(text: string): boolean {
 export function isAtRule(text: string): boolean {
   return /^[\t ]*@/.test(text);
 }
-/**
- * Check whether text is a include
- */
+/** Check whether text is a include: `/^[\t ]*(@include|\+[\w\-_$])/` */
 export function isInclude(text: string): boolean {
   return /^[\t ]*(@include|\+[\w\-_$])/.test(text);
 }
-/**
- * Check whether text is a keyframe
- */
+/** Check whether text is a @keyframes: `/^[\t ]*@keyframes/` */
 export function isKeyframes(text: string): boolean {
   return /^[\t ]*@keyframes/.test(text);
 }
-/**
- * Check whether text is a mixin
- */
+/** Check whether text is a mixin: `/^[\t ]*=|^[\t ]*@mixin/` */
 export function isMixin(text: string): boolean {
   return /^[\t ]*=|^[\t ]*@mixin/.test(text);
 }
-/**
- * Check whether text is a loop
- */
+/** Check whether text is a loop: `/^[\t ]*(@each|@for|@while)/` */
 export function isLoop(text: string): boolean {
   return /^[\t ]*(@each|@for|@while)/.test(text);
 }
-/**
- * Check whether text starts with @media.
- */
+/** Check whether text starts with @media: `/^[\t ]*@media/`*/
 export function isMedia(text: string) {
   return /^[\t ]*@media/.test(text);
 }
-/**
- * TODO
- */
+/** `/^[\t ]*@font-face/` */
 export function isFontFace(text: string) {
   return /^[\t ]*@font-face/.test(text);
 }
-/**
- * Check whether text starts with `::`.
- */
+/** Check whether text is a Pseudo selector: `/^[\t ]*\\?::?/`. */
 export function isPseudo(text: string) {
   return /^[\t ]*\\?::?/.test(text);
 }
-/**
- * Check whether text starts with @if.
- */
+/** Check whether text starts with @if or @else: `/^[\t ]*@if|^ *@else/` */
 export function isIfOrElse(text: string) {
   return /^[\t ]*@if|^ *@else/.test(text);
 }
-/**
- * Check whether text starts with @else.
- */
+/** Check whether text starts with @else: `/^[\t ]*@else/` */
 export function isElse(text: string) {
   return /^[\t ]*@else/.test(text);
 }
-/**
- * Check whether text is bracket selector
- */
+/** Check whether text is bracket selector: `/^[\t ]*\[[\w=\-*"' ]*\]/`*/
 export function isBracketSelector(text: string): boolean {
   return /^[\t ]*\[[\w=\-*"' ]*\]/.test(text);
 }
-/**
- * checks if text last char is a number
- * @param {String} text
- * @return {CompletionItem}
- */
+/** checks if text last char is a number: `/[0-9]$/` && `!text.includes('#')` */
 export function isNumber(text: string): boolean {
-  const reg = /[0-9]$/;
-  return reg.test(text) && !text.includes('#');
+  return /[0-9]$/.test(text) && !text.includes('#');
 }
-/**
- * Check whether text starts with an html tag.
- */
+/** Check whether text starts with an html tag. */
 export function isHtmlTag(text: string) {
   let isTag = false;
   if (
