@@ -1,4 +1,11 @@
-import { isClassOrId, isProperty, hasPropertyValueSpace, isMixin, isPseudo, isBlockCommentEnd } from './utility.regex';
+import {
+  isClassOrId,
+  isProperty,
+  hasPropertyValueSpace,
+  isMixin,
+  isPseudo,
+  isBlockCommentEnd
+} from './index';
 
 test('Is Class OR Id', () => {
   expect(isClassOrId('  	.desktop')).toEqual(true);
