@@ -116,7 +116,6 @@ export function isVoidHtmlTag(text: string) {
   }
   return isTag;
 }
-
 /** Check whether text starts with //R: `/^[\t ]*\/?\/\/ *R *$/` */
 export function isReset(text: string) {
   return /^[\t ]*\/?\/\/ *R *$/.test(text);
@@ -133,7 +132,6 @@ export function isSassSpace(text: string) {
 export function isPath(text: string) {
   return /^.*['"]\.?[\.\/]$/.test(text);
 }
-
 /** Returns true if the string has brackets or semicolons at the end, comments get ignored. */
 export function isScssOrCss(text: string, wasLastLineCss = false) {
   if (wasLastLineCss && text.endsWith(',') && isClassOrId(text)) {
@@ -146,9 +144,9 @@ export function isScssOrCss(text: string, wasLastLineCss = false) {
 export function isCssPseudo(text: string) {
   return /^[\t ]*[&.#%].*:/.test(text);
 }
-/** `/^[\t ]*[&.#%][\w-]*(?!#)\{.*[;\}][\t ]*$/` */
+/** `/^[\t ]*[&.#%][\w-]*(?!#)[\t ]*\{.*[;\}][\t ]*$/` */
 export function isCssOneLiner(text: string) {
-  return /^[\t ]*[&.#%][\w-]*(?!#)\{.*[;\}][\t ]*$/.test(text);
+  return /^[\t ]*[&.#%][\w-]*(?!#)[\t ]*\{.*[;\}][\t ]*$/.test(text);
 }
 /** `/^[\t ]*::?[\w\-]+\(.*\)/` */
 export function isPseudoWithParenthesis(text: string) {
@@ -180,24 +178,17 @@ export function hasColor(text: string) {
 export function isBracketOrWhitespace(text: string) {
   return /^[\t ]*[}{]+[\t }{]*$/.test(text);
 }
-
 /** `/[\t ]*@forward|[\t ]*@use/` */
 export function isAtForwardOrAtUse(text: string) {
   return /[\t ]*@forward|[\t ]*@use/.test(text);
 }
-
-/** if the Property Value Space is none or more that one, this function returns false, else true; */
+/** `/^[\t ]*[\w-]*#\{.*?\}[\w-]*:/` */
+export function isInterpolatedProperty(text: string) {
+  return /^[\t ]*[\w-]*#\{.*?\}[\w-]*:/.test(text);
+}
+/** `/^[\t ]*([\w ]+|[\w ]*#\{.*?\}[\w ]*): [^ ]/` */
 export function hasPropertyValueSpace(text: string) {
-  const split = text.split(':');
-  return split[1] === undefined
-    ? true
-    : split[1][0] === undefined
-    ? true
-    : split[1].startsWith(' ')
-    ? split[1][1] === undefined
-      ? true
-      : !split[1][1].startsWith(' ')
-    : false;
+  return /^[\t ]*([\w ]+|[\w ]*#\{.*?\}[\w ]*): [^ ]/.test(text);
 }
 /** returns the distance between the beginning and the first char. */
 export function getDistance(text: string, tabSize: number): number {
