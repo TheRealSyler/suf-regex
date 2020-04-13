@@ -1,9 +1,9 @@
 export function escapeRegExp(text: string) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 }
-/** Check whether text is a variable: `/^[\t ]*?\$[\w-]+:[\w\-%"']*\/` */
+/** Check whether text is a variable: `/^[\t ]*(\$|--)\S+:.* /` */
 export function isVar(text: string): boolean {
-  return /^[\t ]*?\$[\w-]+:[\w\-%"']*/.test(text);
+  return /^[\t ]*(\$|--)\S+:.*/.test(text);
 }
 /** Check whether text is a \*: `/^[\t ]*?\*\/` */
 export function isStar(text: string): boolean {
