@@ -44,9 +44,13 @@ export function isProperty(text: string, empty?: boolean): boolean {
 export function isAnd(text: string): boolean {
   return /^[\t ]*&/.test(text);
 }
-/** Check whether text is a AtRoot: `/^[\t ]*(@at-root)/` */
+/** Check whether text is a AtRoot: `/^[\t ]*@at-root/` */
 export function isAtRoot(text: string): boolean {
-  return /^[\t ]*(@at-root)/.test(text);
+  return /^[\t ]*@at-root/.test(text);
+}
+/** Check whether text is a extend: `/^[\t ]*@extend/` */
+export function isAtExtend(text: string): boolean {
+  return /^[\t ]*@extend/.test(text);
 }
 /** Check whether text is at rule :  `/^[\t ]*@/`*/
 export function isAtRule(text: string): boolean {
