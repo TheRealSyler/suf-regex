@@ -13,6 +13,14 @@ export function isStar(text: string): boolean {
 export function isClassOrId(text: string): boolean {
   return /^[\t ]*[#\.%]/.test(text);
 }
+/**Check whether text is a selector: `^[\t ]*([#\.%&>~]|\+[\t ])` */
+export function isSelector(text: string): boolean {
+  return /^[\t ]*([#\.%&>~]|\+[\t ])/.test(text);
+}
+/**Check whether text starts with one of [>\~]: `/^[\t ]*[>~]/` */
+export function isSelectorOperator(text: string): boolean {
+  return /^[\t ]*[>~]/.test(text);
+}
 /** `/^[\t ]*[{}]?[\t ]*[#\.%@]/` */
 export function isCssSelector(text: string): boolean {
   return /^[\t ]*[{}]?[\t ]*[#\.%@]/.test(text);
@@ -31,10 +39,6 @@ export function isProperty(text: string, empty?: boolean): boolean {
     return !/^[\t ]*[\w\-]+: *\S+/.test(text);
   }
   return /^[\t ]*[\w\-]+:/.test(text);
-}
-/**Check whether text starts with one of [>\~]: `/^[\t ]*[>~]/` */
-export function isSelectorOperator(text: string): boolean {
-  return /^[\t ]*[>~]/.test(text);
 }
 /** Check whether text starts with &: `/^[\t ]*&/` */
 export function isAnd(text: string): boolean {
@@ -94,27 +98,15 @@ export function isNumber(text: string): boolean {
 }
 /** Check whether text starts with an html tag. */
 export function isHtmlTag(text: string) {
-  let isTag = false;
-  if (
-    /^[\t ]*(a|abbr|address|area|article|aside|audio|b|base|bdi|bdo|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|data|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|embed|fieldset|figure|footer|form|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|main|map|mark|menu|menuitem|meta|meter|nav|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|rb|rp|rt|rtc|ruby|s|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|u|ul|var|video|wbr)((:|::|,|\.|#|\[)[:$#{}()\w\-\[\]='",\.# ]*)?$/.test(
-      text
-    )
-  ) {
-    isTag = true;
-  }
-  return isTag;
+  return /^[\t ]*(a|abbr|address|area|article|aside|audio|b|base|bdi|bdo|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|data|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|embed|fieldset|figure|footer|form|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|main|map|mark|menu|menuitem|meta|meter|nav|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|rb|rp|rt|rtc|ruby|s|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|u|ul|var|video|wbr)((:|::|,|\.|#|\[)[:$#{}()\w\-\[\]='",\.# ]*)?$/.test(
+    text
+  );
 }
 /** Check whether text starts with a self closing html tag. */
 export function isVoidHtmlTag(text: string) {
-  let isTag = false;
-  if (
-    /^[\t ]*(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr|command|keygen|menuitem)((:|::|,|\.|#|\[)[:$#{}()\w\-\[\]='",\.# ]*)?$/.test(
-      text
-    )
-  ) {
-    isTag = true;
-  }
-  return isTag;
+  return /^[\t ]*(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr|command|keygen|menuitem)((:|::|,|\.|#|\[)[:$#{}()\w\-\[\]='",\.# ]*)?$/.test(
+    text
+  );
 }
 /** Check whether text starts with //R: `/^[\t ]*\/?\/\/ *R *$/` */
 export function isReset(text: string) {

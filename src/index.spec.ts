@@ -4,7 +4,8 @@ import {
   hasPropertyValueSpace,
   isMixin,
   isPseudo,
-  isBlockCommentEnd
+  isBlockCommentEnd,
+  isHtmlTag,
 } from './index';
 
 test('Is Class OR Id', () => {
@@ -43,6 +44,11 @@ test('Is Pseudo', () => {
   expect(isPseudo(':root')).toEqual(true);
   expect(isPseudo('\\:root')).toEqual(true);
 });
-test('Is Pseudo', () => {
+test('Is Block Comment', () => {
   expect(isBlockCommentEnd('*')).toEqual(false);
+});
+test('Is HtmlTag', () => {
+  expect(isHtmlTag('a')).toEqual(true);
+  expect(isHtmlTag('a.class#{$var}[type="awd"]')).toEqual(true);
+  expect(isHtmlTag('ab')).toEqual(false);
 });
