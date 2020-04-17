@@ -11,7 +11,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "prepack": "npm run test && npm run build",
+    "prepack": "yarn test && yarn build",
     "build": "tsc -b",
     "watch": "tsc -w",
     "test": "jest"
