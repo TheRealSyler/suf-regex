@@ -1,6 +1,6 @@
 {
   "name": "suf-regex",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "regex utility functions.",
   "files": [
     "lib",
@@ -12,7 +12,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prepack": "yarn test && yarn build",
-    "build": "tsc -b",
+    "build": "del ./lib && tsc -b",
     "watch": "tsc -w",
     "test": "jest"
   },
@@ -44,5 +44,8 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     }
+  },
+  "dependencies": {
+    "del-cli": "^3.0.0"
   }
 }

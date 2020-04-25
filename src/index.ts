@@ -148,9 +148,13 @@ export function isCssOneLiner(text: string) {
 export function isPseudoWithParenthesis(text: string) {
   return /^[\t ]*::?[\w\-]+\(.*\)/.test(text);
 }
-/** `/^[\t ]*\/\/|^ *\/\*\/` */
+/** `/^[\t ]*(\/\/|\/\*)/` */
 export function isComment(text: string) {
-  return /^[\t ]*\/\/|^ *\/\*/.test(text);
+  return /^[\t ]*(\/\/|\/\*)/.test(text);
+}
+/** `/^[\t ]*\/\//` */
+export function isSingleLineComment(text: string) {
+  return /^[\t ]*\/\//.test(text);
 }
 /** `/^[\t ]*(\/\*)/` */
 export function isBlockCommentStart(text: string) {
