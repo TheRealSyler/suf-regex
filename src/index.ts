@@ -56,9 +56,14 @@ export function isAtExtend(text: string): boolean {
 export function isAtRule(text: string): boolean {
   return /^[\t ]*@/.test(text);
 }
-/** Check whether text is a include: `/^[\t ]*(@include|\+[\w\-_$])/` */
-export function isInclude(text: string): boolean {
-  return /^[\t ]*(@include|\+[\w\-_$])/.test(text);
+/** Check whether text is include mixin statement */
+export function isInclude(text: string) {
+  if (/^[\t ]*\+\w+\(.*\)/.test(text)) {
+    return 'prop';
+  } else if (/^[\t ]*(@include|\+\w+)/.test(text)) {
+    return 'header';
+  }
+  return false;
 }
 /** Check whether text is a @keyframes: `/^[\t ]*@keyframes/` */
 export function isKeyframes(text: string): boolean {

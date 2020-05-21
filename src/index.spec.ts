@@ -6,6 +6,7 @@ import {
   isPseudo,
   isBlockCommentEnd,
   isHtmlTag,
+  isInclude,
 } from './index';
 
 test('Is Class OR Id', () => {
@@ -51,4 +52,10 @@ test('Is HtmlTag', () => {
   expect(isHtmlTag('a')).toEqual(true);
   expect(isHtmlTag('a.class#{$var}[type="awd"]')).toEqual(true);
   expect(isHtmlTag('ab')).toEqual(false);
+});
+test('Is Include', () => {
+  expect(isInclude('+a')).toEqual('header');
+  expect(isInclude('@include a')).toEqual('header');
+  expect(isInclude('+a()')).toEqual('prop');
+  expect(isInclude('a')).toEqual(false);
 });
