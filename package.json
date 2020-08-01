@@ -6,6 +6,7 @@
     "lib",
     "README.md"
   ],
+  "side-effects": false,
   "directories": {
     "lib": "lib"
   },
