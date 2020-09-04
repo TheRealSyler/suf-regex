@@ -58,5 +58,7 @@ test('Is Include', () => {
   expect(isInclude('+a')).toEqual('header');
   expect(isInclude('@include a')).toEqual('header');
   expect(isInclude('+a()')).toEqual('prop');
+  expect(isInclude('+a-a()')).toEqual('prop');
+  expect(isInclude('@include a-a()')).toEqual('header');
   expect(isInclude('a')).toEqual(false);
 });

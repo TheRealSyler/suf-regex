@@ -58,7 +58,7 @@ export function isAtRule(text: string): boolean {
 }
 /** Check whether text is include mixin statement */
 export function isInclude(text: string) {
-  if (/^[\t ]*\+\w+\(.*\)/.test(text)) {
+  if (/^[\t ]*\+[-\w_]+\(.*\)/.test(text)) {
     return 'prop';
   } else if (/^[\t ]*(@include|\+\w+)/.test(text)) {
     return 'header';
