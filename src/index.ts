@@ -29,9 +29,9 @@ export function isCssSelector(text: string): boolean {
 export function isAdjacentSelector(text: string): boolean {
   return /^[\t ]*\+[\t ]+/.test(text);
 }
-/**Check whether text is class, id or placeholder: `/^[\t ]*\n?$/` */
+/**Check whether text is class, id or placeholder: `/^[\t ]*\r?\n?$/` */
 export function isEmptyOrWhitespace(text: string): boolean {
-  return /^[\t ]*\n?$/.test(text);
+  return /^[\t ]*\r?\n?$/.test(text);
 }
 /** Check whether text is a property: `empty` ? `!/^[\t ]*[\w\-]+: *\S+/` : `/^[\t ]*[\w\-]+:/` */
 export function isProperty(text: string, empty?: boolean): boolean {
