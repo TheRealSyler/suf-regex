@@ -5,6 +5,10 @@ export function escapeRegExp(text: string) {
 export function isVar(text: string): boolean {
   return /^[\t ]*(\$|--)\S+:.*/.test(text);
 }
+/** Check whether text @import: `/^[\t ]*@import/` */
+export function isAtImport(text: string): boolean {
+  return /^[\t ]*@import/.test(text);
+}
 /** Check whether text is a \*: `/^[\t ]*?\*\/` */
 export function isStar(text: string): boolean {
   return /^[\t ]*?\*/.test(text);
