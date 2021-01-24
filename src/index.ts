@@ -37,12 +37,12 @@ export function isAdjacentSelector(text: string): boolean {
 export function isEmptyOrWhitespace(text: string): boolean {
   return /^[\t ]*\r?\n?$/.test(text);
 }
-/** Check whether text is a property: `empty` ? `!/^[\t ]*[\w\-]+: *\S+/` : `/^[\t ]*[\w\-]+:/` */
-export function isProperty(text: string, empty?: boolean): boolean {
-  if (empty) {
-    return !/^[\t ]*[\w\-]+: *\S+/.test(text);
-  }
-  return /^[\t ]*[\w\-]+:/.test(text);
+/** Check whether text is a property: `/^[\t ]*[\w\-]+:/` */ //  `empty` ? `!/^[\t ]*[\w\-]+: *\S+/` :
+export function isProperty(text: string,): boolean {
+  // if (empty) {
+  //   return !/^[\t ]*[\w\-]+ *: *\S+/.test(text);
+  // }
+  return /^[\t ]*[\w\-]+ *:/.test(text);
 }
 /** Check whether text starts with &: `/^[\t ]*&/` */
 export function isAnd(text: string): boolean {
