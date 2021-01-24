@@ -25,6 +25,7 @@ test('Is Property', () => {
   expect(isProperty('  margin: 213px')).toEqual(true);
   expect(isProperty('  	margin: 213px')).toEqual(true);
   expect(isProperty('  	margin  : 213px')).toEqual(true);
+  expect(isProperty('  	margin \t : 213px')).toEqual(true);
   expect(isProperty('	  +desktop')).toEqual(false);
   expect(isProperty('=function')).toEqual(false);
 });

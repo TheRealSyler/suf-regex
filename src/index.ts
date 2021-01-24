@@ -42,7 +42,7 @@ export function isProperty(text: string,): boolean {
   // if (empty) {
   //   return !/^[\t ]*[\w\-]+ *: *\S+/.test(text);
   // }
-  return /^[\t ]*[\w\-]+ *:/.test(text);
+  return /^[\t ]*[\w\-]+[\t ]*:/.test(text);
 }
 /** Check whether text starts with &: `/^[\t ]*&/` */
 export function isAnd(text: string): boolean {
