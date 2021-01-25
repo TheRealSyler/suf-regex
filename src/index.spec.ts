@@ -57,10 +57,10 @@ test('Is HtmlTag', () => {
   expect(isHtmlTag('tr:nth-child(2n+1)')).toEqual(true);
 });
 test('Is Include', () => {
-  expect(isInclude('+a')).toEqual('header');
-  expect(isInclude('@include a')).toEqual('header');
-  expect(isInclude('+a()')).toEqual('prop');
-  expect(isInclude('+a-a()')).toEqual('prop');
-  expect(isInclude('@include a-a()')).toEqual('header');
+  expect(isInclude('+a')).toEqual(true);
+  expect(isInclude('@include a')).toEqual(true);
+  expect(isInclude('+a()')).toEqual(true);
+  expect(isInclude('+a-a()')).toEqual(true);
+  expect(isInclude('@include a-a()')).toEqual(true);
   expect(isInclude('a')).toEqual(false);
 });

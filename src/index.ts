@@ -62,12 +62,7 @@ export function isAtRule(text: string): boolean {
 }
 /** Check whether text is include mixin statement */
 export function isInclude(text: string) {
-  if (/^[\t ]*\+[-\w_]+\(.*\)/.test(text)) {
-    return 'prop';
-  } else if (/^[\t ]*(@include|\+\w+)/.test(text)) {
-    return 'header';
-  }
-  return false;
+  return /^[\t ]*(@include|\+\w)/.test(text)
 }
 /** Check whether text is a @keyframes: `/^[\t ]*@keyframes/` */
 export function isKeyframes(text: string): boolean {
