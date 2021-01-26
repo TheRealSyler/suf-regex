@@ -226,9 +226,3 @@ export function getDistanceReversed(text: string, tabSize: number): number {
   }
   return count;
 }
-/** What is this function even used for ??, good job me. */
-export function splitOnce(text: string, splitter: string) {
-  const split = text.split(splitter);
-  const key = split.shift();
-  return { body: (split.length > 0 ? splitter : '') + split.join(splitter), key };
-}
