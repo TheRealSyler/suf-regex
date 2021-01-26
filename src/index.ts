@@ -1,9 +1,9 @@
 export function escapeRegExp(text: string) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 }
-/** Check whether text is a variable: `/^[\t ]*(\$|--)\S+:.* /` */
+/** Check whether text is a variable: `/^[\t ]*(\$|--)\S+[\t ]*:.*/
 export function isVar(text: string): boolean {
-  return /^[\t ]*(\$|--)\S+:.*/.test(text);
+  return /^[\t ]*(\$|--)\S+[\t ]*:.*/.test(text);
 }
 /** Check whether text @import: `/^[\t ]*@import/` */
 export function isAtImport(text: string): boolean {
@@ -37,7 +37,7 @@ export function isAdjacentSelector(text: string): boolean {
 export function isEmptyOrWhitespace(text: string): boolean {
   return /^[\t ]*\r?\n?$/.test(text);
 }
-/** Check whether text is a property: `/^[\t ]*[\w\-]+:/` */ //  `empty` ? `!/^[\t ]*[\w\-]+: *\S+/` :
+/** Check whether text is a property: `^[\t ]*[\w\-]+[\t ]*:` */
 export function isProperty(text: string,): boolean {
   // if (empty) {
   //   return !/^[\t ]*[\w\-]+ *: *\S+/.test(text);
