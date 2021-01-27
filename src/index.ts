@@ -17,17 +17,9 @@ export function isStar(text: string): boolean {
 export function isClassOrId(text: string): boolean {
   return /^[\t ]*[#\.%]/.test(text);
 }
-/**Check whether text is a selector: `^[\t ]*([#\.%&>~]|\+[\t ])` */
-export function isSelector(text: string): boolean {
-  return /^[\t ]*([#\.%&>~]|\+[\t ])/.test(text);
-}
 /**Check whether text starts with one of [>\~]: `/^[\t ]*[>~]/` */
 export function isSelectorOperator(text: string): boolean {
   return /^[\t ]*[>~]/.test(text);
-}
-/** `/^[\t ]*[{}]?[\t ]*[#\.%@]/` */
-export function isCssSelector(text: string): boolean {
-  return /^[\t ]*[{}]?[\t ]*[#\.%@]/.test(text);
 }
 /**`/^[\t ]*\+[\t ]+/` */
 export function isAdjacentSelector(text: string): boolean {
@@ -48,10 +40,6 @@ export function isProperty(text: string,): boolean {
 export function isAnd(text: string): boolean {
   return /^[\t ]*&/.test(text);
 }
-/** Check whether text is a AtRoot: `/^[\t ]*@at-root/` */
-export function isAtRoot(text: string): boolean {
-  return /^[\t ]*@at-root/.test(text);
-}
 /** Check whether text is a extend: `/^[\t ]*@extend/` */
 export function isAtExtend(text: string): boolean {
   return /^[\t ]*@extend/.test(text);
@@ -68,33 +56,9 @@ export function isInclude(text: string) {
 export function isKeyframes(text: string): boolean {
   return /^[\t ]*@keyframes/.test(text);
 }
-/** Check whether text is a mixin: `/^[\t ]*=|^[\t ]*@mixin/` */
-export function isMixin(text: string): boolean {
-  return /^[\t ]*=|^[\t ]*@mixin/.test(text);
-}
-/** Check whether text is a loop: `/^[\t ]*(@each|@for|@while)/` */
-export function isLoop(text: string): boolean {
-  return /^[\t ]*(@each|@for|@while)/.test(text);
-}
-/** Check whether text starts with @media: `/^[\t ]*@media/`*/
-export function isMedia(text: string) {
-  return /^[\t ]*@media/.test(text);
-}
-/** `/^[\t ]*@font-face/` */
-export function isFontFace(text: string) {
-  return /^[\t ]*@font-face/.test(text);
-}
 /** Check whether text is a Pseudo selector: `/^[\t ]*\\?::?/`. */
 export function isPseudo(text: string) {
   return /^[\t ]*\\?::?/.test(text);
-}
-/** Check whether text starts with @if or @else: `/^[\t ]*@if|^ *@else/` */
-export function isIfOrElse(text: string) {
-  return /^[\t ]*@if|^ *@else/.test(text);
-}
-/** Check whether text starts with @else: `/^[\t ]*@else/` */
-export function isElse(text: string) {
-  return /^[\t ]*@else/.test(text);
 }
 /** Check whether text is bracket selector: `/^[\t ]*\[[\w=\-*"' ]*\]/`*/
 export function isBracketSelector(text: string): boolean {
@@ -155,10 +119,6 @@ export function isPseudoWithParenthesis(text: string) {
 /** `/^[\t ]*(\/\/|\/\*)/` */
 export function isComment(text: string) {
   return /^[\t ]*(\/\/|\/\*)/.test(text);
-}
-/** `/^[\t ]*\/\//` */
-export function isSingleLineComment(text: string) {
-  return /^[\t ]*\/\//.test(text);
 }
 /** `/^[\t ]*(\/\*)/` */
 export function isBlockCommentStart(text: string) {
