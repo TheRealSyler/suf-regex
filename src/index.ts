@@ -13,6 +13,10 @@ export function isAtImport(text: string): boolean {
 export function isStar(text: string): boolean {
   return /^[\t ]*?\*/.test(text);
 }
+/** Check whether text is a css selector: `/^[\t ]*[{}]?[\t ]*[#\.%@=]/` */
+export function isCssSelector(text: string) {
+  return /^[\t ]*[{}]?[\t ]*[#\.%@=]/.test(text)
+}
 /**Check whether text is class, id or placeholder: `/^[\t ]*[#\.%]/` */
 export function isClassOrId(text: string): boolean {
   return /^[\t ]*[#\.%]/.test(text);
