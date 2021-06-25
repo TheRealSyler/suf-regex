@@ -46,6 +46,7 @@ test('Is HtmlTag', () => {
   expect(isHtmlTag('a.class#{$var}[type="awd"]')).toEqual(true);
   expect(isHtmlTag('ab')).toEqual(false);
   expect(isHtmlTag('tr:nth-child(2n+1)')).toEqual(true);
+  expect(isHtmlTag('picture, img')).toEqual(true);
 });
 test('Is Include', () => {
   expect(isInclude('+a')).toEqual(true);
