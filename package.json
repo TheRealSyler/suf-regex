@@ -1,6 +1,6 @@
 {
   "name": "suf-regex",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "regex utility functions.",
   "files": [
     "lib",
@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prepack": "yarn test && yarn build",
-    "build": "del ./lib && tsc -b",
+    "build": "del-cli ./lib && tsc -b",
     "watch": "tsc -w",
     "test": "jest"
   },
